@@ -7,8 +7,8 @@ import numpy as np
 np.set_printoptions(suppress=True)
 
 
-def vector(x):
-    return np.array(x)
+def vector(x, y, z):
+    return np.array([[x], [y], [z]])
 
 def rotx(theta):
     ct = np.cos(theta)

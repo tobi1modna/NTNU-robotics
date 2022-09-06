@@ -3,17 +3,12 @@
 # Author: Tobia Poppi
 # Date: 06-09-2022
 
-from rotations import rotx, vector
+from rotations.rotations import rotx, vector
 import numpy as np
 
 
 
 def main():
-    #create a vector
-    l = [1.0, 2.0, 3.0]
-    v = vector(l)
-    print(v)
-
     #create a rotation matrix
     theta = np.deg2rad(45)
     Rx = rotx(theta)
@@ -25,6 +20,17 @@ def main():
     
     #if determinant = -1 the matrix is a REFLECTION if it's = 1 it's a ROTATION
     print(np.linalg.det(Rx))
+
+
+    #create a vector
+    p = vector(1., 2., 3.)
+    print(p)
+
+    #rotate the vector
+    q = Rx @ p
+    #or
+    q = Rx.dot(p)
+    print(q)
 
 
 if __name__ == '__main__':
