@@ -30,3 +30,12 @@ def rotz(theta):
     return np.array([[ct, -st, 0.0],
                      [st, ct, 0.0],
                      [0.0, 0.0, 1.0]])
+
+
+def angle_axis(omega, theta):
+    #extract omega components
+    wx, wy, wz = omega
+    m_omega = np.array([[0.0, -wz, wy],[wz, 0.0, -wx],[-wy, wx, 0.0]])
+    R = np.eye(3) + np.sin(theta) * m_omega + (1.0 - np.cos(theta)) * (m_omega @ m_omega)
+    return R
+
